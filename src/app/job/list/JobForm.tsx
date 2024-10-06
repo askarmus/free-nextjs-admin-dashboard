@@ -18,9 +18,8 @@ const JobForm: React.FC<JobFormProps> = ({ onSubmit }) => {
   };
 
   return (
-  <div>
-        <h3 className="font-medium text-black dark:text-white">Job Form</h3>
-     
+    <div>
+      <h3 className="font-medium text-black dark:text-white">Job Form</h3>
       <form onSubmit={handleSubmit}>
         <div className="p-6.5">
           <div className="mb-4.5">
@@ -59,7 +58,7 @@ const JobForm: React.FC<JobFormProps> = ({ onSubmit }) => {
           </button>
         </div>
       </form>
-      </div>
+    </div>
   );
 };
 

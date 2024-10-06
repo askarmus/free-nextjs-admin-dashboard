@@ -28,6 +28,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(201).json(newJob);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Server Error', error: error.message });
+    return res.status(500).json({ message: 'Server Error', error: (error as Error).message });
   }
 }

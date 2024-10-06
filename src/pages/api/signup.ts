@@ -21,6 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Return the token as part of the response
     res.status(201).json({ message: 'User created successfully', token });
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    return res.status(500).json({ message: 'Server Error', error: (error as Error).message });
+
   }
 }

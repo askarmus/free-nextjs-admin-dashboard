@@ -1,7 +1,7 @@
-import { UserRepository } from '../../app-logic/domain/repositories/user-repository';
-import { User } from '../../app-logic/domain/entities/user';
+import { UserRepository } from '@/app-logic/domain/repositories/user-repository';
 import { connectToDatabase } from '../database/mongodb';
 import { UserModel } from '../models/user-model'; // Changed to named import
+import { User } from '@/app-logic/domain/entities/user';
 
 export class MongoDbUserRepository implements UserRepository {
   async findByEmail(email: string): Promise<User | null> {

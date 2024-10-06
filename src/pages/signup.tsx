@@ -29,7 +29,8 @@ const SignupPage = () => {
       // Redirect to the dashboard after successful signup
       router.push('/');
     } catch (error) {
-      setErrorMessage(error.response?.data?.message || 'Signup failed');
+      const errorMessage = (error as any).response?.data?.message || 'Signup failed';
+      setErrorMessage(errorMessage);
     }
   };
 

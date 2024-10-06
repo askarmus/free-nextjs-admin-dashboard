@@ -11,7 +11,7 @@ export function authenticate(req: NextApiRequest, res: NextApiResponse, next: ()
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your_secret_key');
-    req.user = decoded;
+    //req.user = decoded;
     next();
   } catch (error) {
     return res.status(401).json({ message: 'Invalid token' });
