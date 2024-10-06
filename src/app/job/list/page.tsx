@@ -130,29 +130,30 @@ const JobListPage = () => {
 
         {/* Table */}
         <table {...getTableProps()} className="min-w-full divide-y divide-gray-200">
-        <thead>
-  {headerGroups.map((headerGroup, index) => (
-    <tr {...headerGroup.getHeaderGroupProps()} key={index} className="bg-gray-200">
-      {headerGroup.headers.map((column) => (
-        <th
-          {...column.getHeaderProps()}
-          key={column.id}  // Add key for each column header
-          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-        >
-          {column.render('Header')}
-        </th>
-      ))}
-    </tr>
-  ))}
-</thead>
+          <thead>
+            {headerGroups.map((headerGroup, headerIndex) => (
+              <tr {...headerGroup.getHeaderGroupProps()} key={headerIndex} className="bg-gray-200">
+                {headerGroup.headers.map((column, colIndex) => (
+                  <th
+                    {...column.getHeaderProps()}
+                    key={colIndex} // Add key for each column header
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    {column.render('Header')}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
           <tbody {...getTableBodyProps()}>
-            {page.map((row) => {
+            {page.map((row, rowIndex) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()} key={row.id}  className="border-t">
-                  {row.cells.map((cell) => (
+                <tr {...row.getRowProps()} key={rowIndex} className="border-t">
+                  {row.cells.map((cell, cellIndex) => (
                     <td
                       {...cell.getCellProps()}
+                      key={cellIndex} // Add key for each cell
                       className="py-2 px-4 text-sm text-gray-700"
                     >
                       {cell.render('Cell')}
