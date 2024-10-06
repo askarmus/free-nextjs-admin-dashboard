@@ -148,7 +148,7 @@ const JobListPage = () => {
             {page.map((row) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()} className="border-t">
+                <tr {...row.getRowProps()} key={row.id}  className="border-t">
                   {row.cells.map((cell) => (
                     <td
                       {...cell.getCellProps()}
