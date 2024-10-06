@@ -130,20 +130,21 @@ const JobListPage = () => {
 
         {/* Table */}
         <table {...getTableProps()} className="min-w-full divide-y divide-gray-200">
-          <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()} className="bg-gray-200">
-                {headerGroup.headers.map((column) => (
-                  <th
-                    {...column.getHeaderProps()}
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    {column.render('Header')}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
+        <thead>
+  {headerGroups.map((headerGroup, index) => (
+    <tr {...headerGroup.getHeaderGroupProps()} key={index} className="bg-gray-200">
+      {headerGroup.headers.map((column) => (
+        <th
+          {...column.getHeaderProps()}
+          key={column.id}  // Add key for each column header
+          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+        >
+          {column.render('Header')}
+        </th>
+      ))}
+    </tr>
+  ))}
+</thead>
           <tbody {...getTableBodyProps()}>
             {page.map((row) => {
               prepareRow(row);
