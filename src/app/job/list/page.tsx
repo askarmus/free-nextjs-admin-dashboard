@@ -161,11 +161,11 @@ const JobListPage: React.FC = () => {
       </div>
 
       {/* Drawer for Adding New Job */}
-      <Drawer open={isDrawerOpen} onClose={toggleDrawer} direction="right">
-        <div className="p-4 w-400">
+      <Drawer open={isDrawerOpen} onClose={toggleDrawer} direction="right" size={400}>
+         
           <h2 className="text-lg font-bold mb-4">Create New Job</h2>
           <JobForm onSubmit={handleFormSubmit} />
-        </div>
+        
       </Drawer>
 
     </DefaultLayout>

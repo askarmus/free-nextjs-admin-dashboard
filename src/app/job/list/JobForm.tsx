@@ -1,20 +1,24 @@
+import LoadingSpinner from '@/components/Core/LoadingSpinner';
 import React, { useState } from 'react';
 
 interface JobFormProps {
-  onSubmit: (data: { title: string; jobMode: string }) => void;
+  onSubmit: (data: { title: string; jobMode: string }) => Promise<void>;
 }
 
 const JobForm: React.FC<JobFormProps> = ({ onSubmit }) => {
   const [title, setTitle] = useState('');
   const [jobMode, setJobMode] = useState('Remote');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     const formData = {
       title,
       jobMode,
     };
-    onSubmit(formData);
+    await onSubmit(formData);
+    setLoading(false); // Reset loading state after submission
   };
 
   return (
@@ -52,9 +56,11 @@ const JobForm: React.FC<JobFormProps> = ({ onSubmit }) => {
 
           <button
             type="submit"
-            className="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90"
+            className="flex w-full justify-center items-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90"
+            disabled={loading}
           >
-            Submit
+            {loading ? <LoadingSpinner /> : null}
+            {loading ? 'Submitting...' : 'Submit'}
           </button>
         </div>
       </form>
